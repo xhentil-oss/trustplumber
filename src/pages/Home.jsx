@@ -1,24 +1,32 @@
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { business } from '@/config/business.js'
+import { homeFaqs } from '@/data/faqs.js'
 import Hero from '@/components/sections/Hero.jsx'
+import LiveAvailability from '@/components/sections/LiveAvailability.jsx'
 import TrustStrip from '@/components/sections/TrustStrip.jsx'
-import SocialProof from '@/components/sections/SocialProof.jsx'
 import ServiceGrid from '@/components/sections/ServiceGrid.jsx'
 import ProblemSection from '@/components/sections/ProblemSection.jsx'
+import SocialProof from '@/components/sections/SocialProof.jsx'
 import WhyChooseUs from '@/components/sections/WhyChooseUs.jsx'
-import CoverageGrid from '@/components/sections/CoverageGrid.jsx'
+import PricingTransparency from '@/components/sections/PricingTransparency.jsx'
 import ProcessSteps from '@/components/sections/ProcessSteps.jsx'
-import CaseStudyCards from '@/components/sections/CaseStudyCards.jsx'
-import BlogCards from '@/components/sections/BlogCards.jsx'
-import FAQAccordion from '@/components/sections/FAQAccordion.jsx'
+import CoverageGrid from '@/components/sections/CoverageGrid.jsx'
 import FinalCTABand from '@/components/sections/FinalCTABand.jsx'
+
+// Below-the-fold sections — lazy-loaded to keep the homepage TTI tight.
+const CaseStudyCards = lazy(() => import('@/components/sections/CaseStudyCards.jsx'))
+const FAQAccordion = lazy(() => import('@/components/sections/FAQAccordion.jsx'))
+const BlogCards = lazy(() => import('@/components/sections/BlogCards.jsx'))
 
 /**
  * Home — the authority hub.
  *
- * Section order is intentional and matches the Phase 2 conversion
- * funnel: Hero -> Trust -> Social proof -> Services -> Problems
- * -> Why us -> Coverage -> Process -> Cases -> Blog -> FAQ -> CTA.
+ * Optimized conversion funnel:
+ *   Hero → LiveAvailability (why now) → TrustStrip (credentials) →
+ *   ServiceGrid (what) → ProblemSection (relevance) → SocialProof →
+ *   WhyChooseUs (differentiators) → PricingTransparency (objection) →
+ *   ProcessSteps (how) → CoverageGrid (where) → CaseStudyCards (proof) →
+ *   FAQAccordion (3 top objections) → BlogCards (authority) → FinalCTABand.
  */
 export default function Home() {
   useEffect(() => {
@@ -29,17 +37,24 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <LiveAvailability />
       <TrustStrip />
-      <SocialProof />
       <ServiceGrid />
       <ProblemSection />
+      <SocialProof />
       <WhyChooseUs />
-      <CoverageGrid />
+      <PricingTransparency />
       <ProcessSteps />
-      <CaseStudyCards />
-      <BlogCards />
-      <FAQAccordion />
-      <FinalCTABand />
+      <CoverageGrid />
+      <Suspense fallback={null}>
+        <CaseStudyCards />
+        <FAQAccordion items={homeFaqs.slice(0, 3)} />
+        <BlogCards />
+      </Suspense>
+      <FinalCTABand
+        heading="Still deciding? Call the dispatcher."
+        body="90 seconds to know what it costs. Real human — no chat-bot, no voicemail tree."
+      />
     </>
   )
 }

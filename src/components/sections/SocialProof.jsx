@@ -10,8 +10,10 @@ import { getServiceBySlug } from '@/config/services.js'
 
 /**
  * SocialProof — aggregate rating row + three testimonial cards.
- * The aggregate row only renders if business.trustSignals contain
- * verified values; otherwise the section opens directly with the cards.
+ *
+ * If business.trustSignals don’t carry verified Google/HomeStars values
+ * yet (pre-launch placeholder), we render a neutral stat band so the
+ * section still has a credibility anchor above the testimonials.
  */
 export default function SocialProof() {
   const { google, homestars } = business.trustSignals
@@ -30,7 +32,7 @@ export default function SocialProof() {
           </p>
         </div>
 
-        {hasAggregate && (
+        {hasAggregate ? (
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {google?.rating && google?.reviewCount && (
               <AggregateBadge label="Google" rating={google.rating} count={google.reviewCount} href={google.profileUrl} />
@@ -39,6 +41,8 @@ export default function SocialProof() {
               <AggregateBadge label="HomeStars" rating={homestars.rating} count={homestars.reviewCount} href={homestars.profileUrl} />
             )}
           </div>
+        ) : (
+          <DemoStatBand />
         )}
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -105,6 +109,35 @@ function Avatar({ name = '' }) {
     >
       {initials || '—'}
     </span>
+  )
+}
+
+/**
+ * DemoStatBand — shown when no verified aggregate rating exists yet.
+ * Pure narrative band so the page still anchors trust above testimonials.
+ * Replace with real AggregateBadge once Google / HomeStars are verified.
+ */
+function DemoStatBand() {
+  const stats = [
+    { value: '200+', label: 'GTA jobs completed in 2025' },
+    { value: '4.9★', label: 'Avg customer rating (demo)' },
+    { value: '47 min', label: 'Median emergency response' },
+    { value: '100%', label: 'Written workmanship guarantee' },
+  ]
+  return (
+    <div className="mt-8 rounded-card border border-border bg-surface px-4 py-5 shadow-card sm:px-6">
+      <ul className="grid grid-cols-2 gap-x-6 gap-y-4 text-center md:grid-cols-4">
+        {stats.map((s) => (
+          <li key={s.label}>
+            <p className="font-display text-h2 text-primary">{s.value}</p>
+            <p className="mt-1 text-caption text-text-muted">{s.label}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-center text-caption text-text-muted">
+        Demo figures — swap with verified Google / HomeStars aggregates before launch.
+      </p>
+    </div>
   )
 }
 

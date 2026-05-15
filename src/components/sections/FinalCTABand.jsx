@@ -10,7 +10,7 @@ import PhoneButton from '@/components/ui/PhoneButton.jsx'
  *  - emergency: red band, phone-first CTA
  */
 export default function FinalCTABand({
-  eyebrow = 'Ready when you are',
+  eyebrow = 'Still deciding?',
   heading,
   body,
   variant = 'default',
@@ -18,7 +18,7 @@ export default function FinalCTABand({
 }) {
   const isEmergency = variant === 'emergency'
   const bg = isEmergency ? 'bg-emergency' : 'bg-primary'
-  const eyebrowColor = isEmergency ? 'text-white/80' : 'text-primary-200'
+  const eyebrowColor = isEmergency ? 'text-white/80' : 'text-accent-teal'
   const bodyColor = isEmergency ? 'text-white/90' : 'text-primary-100'
 
   return (
@@ -32,10 +32,10 @@ export default function FinalCTABand({
           <div className="md:col-span-7">
             <p className={`eyebrow ${eyebrowColor}`}>{eyebrow}</p>
             <h2 id="final-cta-heading" className="mt-3 text-h1 text-text-inverse">
-              {heading || 'Need a plumber in the GTA today?'}
+              {heading || 'Talk to the dispatcher — 90 seconds to diagnose.'}
             </h2>
             <p className={`mt-4 max-w-xl text-body-lg ${bodyColor}`}>
-              {body || 'Tell us what\u2019s happening — we\u2019ll quote it honestly and fix it properly. Calls answered by a real dispatcher, 24/7.'}
+              {body || 'Tell us what’s happening on the phone. We’ll quote it honestly, book the next available slot, and put it in writing before any work starts.'}
             </p>
           </div>
           <div className="md:col-span-5 md:justify-self-end">
