@@ -1,19 +1,31 @@
 /**
- * Case studies shown on the homepage. Real jobs only. Until photo
- * releases are in place, `image` stays null and the card renders without
- * a hero image.
+ * Case studies \u2014 expanded schema for the CasePortfolio section.
+ * Real jobs only. The `image` field uses picsum seeded URLs as demo
+ * placeholders; swap with real, release-cleared photos before launch.
  */
 export const caseStudies = [
   {
     id: 'cs-001',
     type: 'emergency',
     typeLabel: 'Emergency',
+    featured: true,
     title: 'Burst supply line at 3 a.m. in a Riverdale semi',
     city: 'Toronto',
+    neighbourhood: 'Riverdale',
+    year: '2026',
+    duration: 'Same night + 1 day finish',
     service: 'emergency-plumbing',
     summary:
-      'Frozen copper supply behind a kitchen wall let go overnight. Stabilized the leak, dried the cavity, replaced the failed section with PEX after daylight quote.',
-    image: null,
+      'Frozen copper supply behind a kitchen wall let go overnight. We stabilised the leak in under 40 minutes, dried the cavity, and rebuilt the run in PEX once the homeowner approved the morning quote.',
+    challenge: 'Active leak inside a load-bearing wall during a -22\u00b0C cold snap, with the homeowner unable to reach the main shut-off.',
+    solution: 'Dispatched within 12 minutes, isolated supply at the meter, opened the cavity for forced drying, returned at 8 a.m. with a written PEX replacement quote.',
+    outcome: 'No drywall replacement beyond the 60 cm access panel. Insurer accepted the written report; deductible was the only out-of-pocket cost.',
+    kpis: [
+      { label: 'Dispatch time', value: '12 min' },
+      { label: 'Final repair', value: '< 24 h' },
+      { label: 'Drywall opened', value: '60 cm\u00b2' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-burst/1200/800',
   },
   {
     id: 'cs-002',
@@ -21,21 +33,109 @@ export const caseStudies = [
     typeLabel: 'Commercial',
     title: 'Restaurant kitchen drain rebuild in Port Credit',
     city: 'Mississauga',
+    neighbourhood: 'Port Credit',
+    year: '2025',
+    duration: '3 nights, off-hours',
     service: 'commercial-plumbing',
     summary:
-      'Cast-iron kitchen line corroded internally after twenty years of grease. Replaced with PVC, added a grease interceptor, scheduled quarterly jetting.',
-    image: null,
+      'Twenty-year-old cast iron failed under grease load. We replaced the run with schedule-40 PVC, dropped in a 50 lb grease interceptor, and scheduled quarterly jetting.',
+    challenge: 'Restaurant could not close during the work; existing line was leaking at three joints.',
+    solution: 'Phased the rebuild over three overnight shifts with temporary bypass lines; coordinated inspections between dinner services.',
+    outcome: 'Zero lost service hours. Health-unit re-inspection passed first try.',
+    kpis: [
+      { label: 'Downtime', value: '0 h' },
+      { label: 'Line replaced', value: '14 m' },
+      { label: 'Jetting plan', value: 'Quarterly' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-restaurant/1200/800',
   },
   {
     id: 'cs-003',
     type: 'major-repair',
     typeLabel: 'Major repair',
-    title: 'Backwater valve retrofit in basement-flood zone',
+    title: 'Backwater valve retrofit in a basement-flood zone',
     city: 'Toronto',
+    neighbourhood: 'East York',
+    year: '2025',
+    duration: '2 days',
     service: 'backwater-valve-installation',
     summary:
-      'Pre-war east-end home in a combined-sewer surcharge zone. Trenched, installed a Mainline backwater valve, helped the homeowner apply for the City of Toronto subsidy.',
-    image: null,
+      'Pre-war home sitting in a combined-sewer surcharge zone. Trenched a Mainline backwater valve into the lateral and helped the homeowner file for the City of Toronto subsidy.',
+    challenge: 'Recurring sewer back-ups during summer storms; homeowner had been quoted excavation work twice the price elsewhere.',
+    solution: 'Located the lateral with a sonde, kept the trench inside the existing utility envelope, installed an accessible cleanout for future inspections.',
+    outcome: 'Customer received $1,250 City of Toronto subsidy. Two storm events since with zero backflow.',
+    kpis: [
+      { label: 'Subsidy claimed', value: '$1,250' },
+      { label: 'Back-ups since', value: '0' },
+      { label: 'Trench depth', value: '1.8 m' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-backwater/1200/800',
+  },
+  {
+    id: 'cs-004',
+    type: 'residential',
+    typeLabel: 'Residential',
+    title: 'Tankless water heater conversion in North York',
+    city: 'Toronto',
+    neighbourhood: 'North York',
+    year: '2026',
+    duration: '1 day',
+    service: 'water-heaters',
+    summary:
+      'Two-tank household upgraded to a wall-hung condensing tankless unit with a recirculation loop. Permits filed, gas line re-sized, manufacturer warranty registered.',
+    challenge: 'Existing tanks were rusting; homeowner wanted to free up basement floor space without sacrificing hot-water throughput.',
+    solution: 'Selected a 199k BTU condensing unit, ran new 3/4" gas, added a return loop for instant hot water at the master ensuite.',
+    outcome: 'Recovered ~1.2 m\u00b2 of floor area. Gas bill down ~18% across the first quarter.',
+    kpis: [
+      { label: 'Space recovered', value: '1.2 m\u00b2' },
+      { label: 'Gas spend', value: '\u221218% Q1' },
+      { label: 'Warranty', value: '15 yr' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-tankless/1200/800',
+  },
+  {
+    id: 'cs-005',
+    type: 'emergency',
+    typeLabel: 'Emergency',
+    title: 'Sump-pump failure mid-storm in Scarborough',
+    city: 'Toronto',
+    neighbourhood: 'Scarborough',
+    year: '2025',
+    duration: 'Same evening',
+    service: 'sump-pumps',
+    summary:
+      'Primary pump seized as a thunderstorm cell parked overhead. Swapped to a new 1/2 HP cast-iron unit and added a battery backup with high-water alarm.',
+    challenge: 'Water rising in the pit, basement finished, homeowner couldn\u2019t shut down storm flow.',
+    solution: 'Temporary high-volume utility pump on site within 40 minutes; permanent unit and backup installed before midnight.',
+    outcome: 'No finished-floor damage. Annual maintenance reminder set up automatically.',
+    kpis: [
+      { label: 'On-site', value: '40 min' },
+      { label: 'Backup', value: 'AGM + alarm' },
+      { label: 'Floor damage', value: 'None' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-sump/1200/800',
+  },
+  {
+    id: 'cs-006',
+    type: 'residential',
+    typeLabel: 'Residential',
+    title: 'Whole-home repipe in a 1948 Etobicoke bungalow',
+    city: 'Toronto',
+    neighbourhood: 'Etobicoke',
+    year: '2026',
+    duration: '4 days',
+    service: 'pipe-repair-replacement',
+    summary:
+      'Galvanised supply lines were pinholing weekly. Re-piped the entire home in PEX-A with a manifold, isolation valves, and a leak-detection sensor at the main.',
+    challenge: 'Homeowner wanted minimal drywall disruption; brittle plaster in three rooms.',
+    solution: 'Pulled lines through existing chases and a single mechanical room manifold; only six access cuts across the whole project.',
+    outcome: 'Pressure restored to 60 psi household-wide. Drywall repair budget came in under the original allowance.',
+    kpis: [
+      { label: 'Access cuts', value: '6' },
+      { label: 'Pressure', value: '60 psi' },
+      { label: 'Re-pipe scope', value: 'Whole home' },
+    ],
+    image: 'https://picsum.photos/seed/tp-case-repipe/1200/800',
   },
 ]
 

@@ -15,7 +15,7 @@ import FinalCTABand from '@/components/sections/FinalCTABand.jsx'
 
 // Below-the-fold sections — lazy-loaded to keep the homepage TTI tight.
 const RecentWork = lazy(() => import('@/components/sections/RecentWork.jsx'))
-const CaseStudyCards = lazy(() => import('@/components/sections/CaseStudyCards.jsx'))
+const CasePortfolio = lazy(() => import('@/components/sections/CasePortfolio.jsx'))
 const FAQAccordion = lazy(() => import('@/components/sections/FAQAccordion.jsx'))
 const BlogCards = lazy(() => import('@/components/sections/BlogCards.jsx'))
 
@@ -51,7 +51,7 @@ export default function Home() {
       <ProcessSteps />
       <CoverageGrid />
       <Suspense fallback={null}>
-        <CaseStudyCards />
+        <CasePortfolio />
         <FAQAccordion items={homeFaqs.slice(0, 3)} />
         <BlogCards />
       </Suspense>
