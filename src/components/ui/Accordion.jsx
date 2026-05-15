@@ -55,6 +55,7 @@ export default function Accordion({
                   'flex w-full items-center justify-between gap-4 px-5 py-4 text-left',
                   'text-body font-semibold text-text-primary',
                   'transition-colors hover:bg-primary-50',
+                  isOpen && 'bg-primary-50/70',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-inset',
                   i === 0 && 'rounded-t-card',
                   i === items.length - 1 && !isOpen && 'rounded-b-card',

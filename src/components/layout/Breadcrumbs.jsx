@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 export default function Breadcrumbs({ items = [], className }) {
   if (items.length === 0) return null
   return (
-    <nav aria-label="Breadcrumb" className={cn('text-body-sm text-text-muted', className)}>
+    <nav aria-label="Breadcrumb" className={cn('pt-5 md:pt-6 text-body-sm text-text-muted', className)}>
       <ol className="flex flex-wrap items-center gap-1">
         {items.map((item, i) => {
           const isLast = i === items.length - 1

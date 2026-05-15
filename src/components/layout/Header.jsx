@@ -59,7 +59,7 @@ export default function Header() {
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-h3 font-display font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue rounded-btn"
-            aria-label={`${business.name} \u2014 home`}
+            aria-label={`${business.name} — home`}
           >
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-btn bg-primary text-text-inverse">
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

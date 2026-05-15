@@ -21,16 +21,24 @@ export default function ProcessSteps() {
         </div>
 
         <ol className="relative mt-12 grid gap-6 lg:grid-cols-4">
-          {/* connector line on desktop */}
-          <div aria-hidden="true" className="absolute left-0 right-0 top-6 hidden h-px bg-border lg:block" />
-          {processSteps.map((s) => {
+          {/* horizontal connector on desktop */}
+          <div aria-hidden="true" className="absolute left-0 right-0 top-12 hidden h-px bg-gradient-to-r from-transparent via-border-strong to-transparent lg:block" />
+          {processSteps.map((s, idx) => {
             const Icon = Icons[s.icon] || Icons.Check
+            const isLast = idx === processSteps.length - 1
             return (
-              <li key={s.number} className="relative flex flex-col items-start rounded-card border border-border bg-surface p-5 lg:items-center lg:text-center">
-                <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-text-inverse shadow-card">
+              <li key={s.number} className="relative flex flex-col items-start rounded-card border border-border bg-surface p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover lg:items-center lg:text-center">
+                {/* vertical connector on mobile/tablet */}
+                {!isLast && (
+                  <div aria-hidden="true" className="absolute left-9 top-full h-6 w-px bg-border-strong lg:hidden" />
+                )}
+                <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent-blue text-text-inverse shadow-elevated ring-4 ring-surface">
                   <Icon className="h-5 w-5" aria-hidden="true" />
+                  <span className="absolute -bottom-1.5 -right-1.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent-teal text-caption font-bold text-text-inverse ring-2 ring-surface">
+                    {s.number}
+                  </span>
                 </span>
-                <span className="mt-3 text-caption font-semibold uppercase tracking-wider text-accent-teal">
+                <span className="mt-4 text-caption font-semibold uppercase tracking-wider text-accent-teal">
                   Step {s.number}
                 </span>
                 <h3 className="mt-1 text-h4 text-text-primary">{s.title}</h3>

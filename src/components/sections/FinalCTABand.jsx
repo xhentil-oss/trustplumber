@@ -22,9 +22,13 @@ export default function FinalCTABand({
   const bodyColor = isEmergency ? 'text-white/90' : 'text-primary-100'
 
   return (
-    <section className={`${bg} text-text-inverse`} aria-labelledby="final-cta-heading">
+    <section className={`relative overflow-hidden ${bg} text-text-inverse`} aria-labelledby="final-cta-heading">
+      {/* Decorative blobs for depth */}
+      <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-dot-grid opacity-10" />
       <Container>
-        <div className="grid items-center gap-8 py-section md:grid-cols-12">
+        <div className="relative grid items-center gap-8 py-section md:grid-cols-12">
           <div className="md:col-span-7">
             <p className={`eyebrow ${eyebrowColor}`}>{eyebrow}</p>
             <h2 id="final-cta-heading" className="mt-3 text-h1 text-text-inverse">

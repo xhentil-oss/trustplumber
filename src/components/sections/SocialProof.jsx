@@ -53,12 +53,13 @@ export default function SocialProof() {
                 <blockquote className="mt-4 text-body text-text-secondary">
                   &ldquo;{r.quote}&rdquo;
                 </blockquote>
-                <footer className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                  <div>
-                    <p className="text-body-sm font-semibold text-text-primary">{r.name}</p>
-                    <p className="text-caption text-text-muted">{r.location}</p>
+                <footer className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                  <Avatar name={r.name} />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-body-sm font-semibold text-text-primary">{r.name}</p>
+                    <p className="truncate text-caption text-text-muted">{r.location}</p>
                   </div>
-                  <p className="text-caption text-text-muted">{formatDate(r.date)}</p>
+                  <p className="shrink-0 text-caption text-text-muted">{formatDate(r.date)}</p>
                 </footer>
               </Card>
             )
@@ -86,6 +87,24 @@ function Stars({ rating = 5 }) {
         />
       ))}
     </div>
+  )
+}
+
+function Avatar({ name = '' }) {
+  const initials = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent-blue text-caption font-bold text-text-inverse shadow-card"
+    >
+      {initials || '—'}
+    </span>
   )
 }
 

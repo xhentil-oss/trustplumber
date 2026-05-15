@@ -34,7 +34,7 @@ export default function CoverageGrid({ mapSlot }) {
                 <li key={l.slug}>
                   <Link
                     to={`/locations/${l.slug}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-body-sm font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-body-sm font-medium text-text-secondary transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary-50 hover:text-primary hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue"
                   >
                     <MapPin className="h-3.5 w-3.5 text-accent-teal" aria-hidden="true" />
                     {l.name}

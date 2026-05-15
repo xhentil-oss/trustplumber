@@ -25,9 +25,9 @@ export default function WhyChooseUs() {
             {whyChooseUs.map((p) => {
               const Icon = Icons[p.icon] || Icons.Check
               return (
-                <li key={p.title} className="flex gap-4">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-btn bg-accent-teal/10 text-accent-teal">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                <li key={p.title} className="group flex gap-4 rounded-card border border-transparent p-4 transition-all hover:border-border hover:bg-background hover:shadow-card">
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-accent-teal/10 text-accent-teal ring-1 ring-inset ring-accent-teal/20 transition-transform group-hover:scale-105">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   <div>
                     <h3 className="text-h4 text-text-primary">{p.title}</h3>

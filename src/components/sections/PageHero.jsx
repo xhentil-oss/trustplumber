@@ -33,9 +33,22 @@ export default function PageHero({
   const tileBg = emergency ? 'bg-white/10 text-text-inverse' : 'bg-primary-50 text-primary'
 
   return (
-    <section className={`${bg} pt-14 pb-section md:pt-20`} aria-labelledby="hero-heading">
+    <section className={`relative overflow-hidden ${bg} pt-14 pb-section md:pt-20`} aria-labelledby="hero-heading">
+      {/* Decorative blobs */}
+      {!emergency ? (
+        <>
+          <div aria-hidden="true" className="pointer-events-none absolute -top-32 right-[-10%] h-[420px] w-[420px] rounded-full bg-accent-blue/12 blur-3xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 left-[-10%] h-[360px] w-[360px] rounded-full bg-accent-teal/12 blur-3xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-dot-grid opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+        </>
+      ) : (
+        <>
+          <div aria-hidden="true" className="pointer-events-none absolute -top-32 right-[-10%] h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 left-[-10%] h-[360px] w-[360px] rounded-full bg-white/5 blur-3xl" />
+        </>
+      )}
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+        <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
             <div className={`inline-flex h-12 w-12 items-center justify-center rounded-card ${tileBg}`}>
               <Icon className="h-6 w-6" aria-hidden="true" />

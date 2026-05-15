@@ -36,11 +36,13 @@ export default function ServiceGrid({
                 key={s.slug}
                 to={`/services/${s.slug}`}
                 padding="md"
-                className="group flex h-full flex-col"
+                className="group relative flex h-full flex-col overflow-hidden"
               >
+                {/* Top accent bar on hover */}
+                <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${s.isEmergency ? 'bg-emergency' : 'bg-gradient-to-r from-accent-blue to-accent-teal'}`} />
                 <div className="flex items-center justify-between">
-                  <span className={`inline-flex h-11 w-11 items-center justify-center rounded-btn ${s.isEmergency ? 'bg-emergency/10 text-emergency' : 'bg-primary-50 text-primary'}`}>
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  <span className={`inline-flex h-12 w-12 items-center justify-center rounded-card ring-1 ring-inset transition-colors ${s.isEmergency ? 'bg-emergency/10 text-emergency ring-emergency/15 group-hover:bg-emergency/15' : 'bg-primary-50 text-primary ring-primary-100 group-hover:bg-primary-100/70'}`}>
+                    <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   {s.isEmergency && <Badge variant="emergency" size="sm">24/7</Badge>}
                 </div>

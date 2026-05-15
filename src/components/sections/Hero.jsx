@@ -13,15 +13,20 @@ import { business } from '@/config/business.js'
  */
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background pt-10 pb-12 lg:pt-16 lg:pb-20">
-      {/* Soft decorative blob — kept very low contrast for calm feel */}
+    <section className="hero-surface relative overflow-hidden bg-background pt-10 pb-12 lg:pt-16 lg:pb-20">
+      {/* Soft decorative blobs — bumped opacity for visible depth */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 right-[-10%] h-[480px] w-[480px] rounded-full bg-accent-blue/5 blur-3xl"
+        className="pointer-events-none absolute -top-32 right-[-10%] h-[480px] w-[480px] rounded-full bg-accent-blue/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 left-[-10%] h-[420px] w-[420px] rounded-full bg-accent-teal/5 blur-3xl"
+        className="pointer-events-none absolute -bottom-32 left-[-10%] h-[420px] w-[420px] rounded-full bg-accent-teal/15 blur-3xl"
+      />
+      {/* Faint dotted grid for texture */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-dot-grid opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
       />
 
       <Container className="relative">
@@ -90,7 +95,9 @@ function CallbackCard() {
   }
 
   return (
-    <div className="rounded-card border border-border bg-surface p-6 shadow-elevated sm:p-7">
+    <div className="relative overflow-hidden rounded-card border border-border bg-surface p-6 shadow-elevated sm:p-7">
+      {/* Top accent bar */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-blue via-primary to-accent-teal" />
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-h3 text-text-primary">Tell us what&rsquo;s happening</h2>
@@ -98,7 +105,7 @@ function CallbackCard() {
             We&rsquo;ll call you back. Usually within 15 minutes during business hours.
           </p>
         </div>
-        <span className="ml-3 inline-flex items-center rounded-full bg-success/10 px-2.5 py-1 text-caption font-semibold text-success">
+        <span className="ml-3 inline-flex items-center rounded-full bg-accent-teal/10 px-2.5 py-1 text-caption font-semibold text-accent-teal ring-1 ring-inset ring-accent-teal/20">
           24/7
         </span>
       </div>
