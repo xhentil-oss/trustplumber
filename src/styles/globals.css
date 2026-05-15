@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   BASE LAYER — Sensible defaults for the whole site
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  /* Headings use display font by default */
+  h1, h2, h3 {
+    @apply font-display text-text-primary;
+  }
+
+  h4, h5, h6 {
+    @apply font-sans text-text-primary;
+  }
+
+  /* Focus ring — visible, accessible */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent-blue ring-offset-2 ring-offset-background;
+  }
+
+  /* Default link styling — overridden by component classes when needed */
+  a {
+    @apply transition-colors;
+  }
+
+  /* Prevent layout shift from images without explicit dimensions */
+  img,
+  picture,
+  video {
+    @apply max-w-full h-auto;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary text-text-inverse;
+  }
+
+  /* Sticky mobile CTA spacing — body padding so content isn't hidden */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 72px;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPONENTS LAYER — Reusable patterns
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Section wrapper — consistent vertical rhythm */
+  .section {
+    @apply py-section md:py-section-lg;
+  }
+
+  /* Container with the standard inner padding */
+  .container-tight {
+    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Reading column for long-form content */
+  .prose-column {
+    @apply max-w-prose-wide;
+  }
+
+  /* Eyebrow text above headings */
+  .eyebrow {
+    @apply text-caption font-semibold uppercase tracking-wider text-accent-teal;
+  }
+
+  /* Card baseline */
+  .card-base {
+    @apply rounded-card bg-surface shadow-card border border-border transition-all;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   UTILITIES LAYER — One-off helpers
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* Visually hide but keep accessible to screen readers */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+
+  /* Smooth scrolling for anchor links */
+  .scroll-mt-header {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FORMS — Accessible defaults
+   ═══════════════════════════════════════════════════════════════════ */
+
+input,
+textarea,
+select {
+  @apply font-sans;
+}
+
+input:invalid,
+textarea:invalid {
+  box-shadow: none;
+}
+
+/* Remove the yellow autofill background in Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0F2744;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
